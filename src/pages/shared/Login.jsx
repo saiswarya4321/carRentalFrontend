@@ -52,7 +52,7 @@ function Login() {
       const token = response.data.token;
       localStorage.setItem('token', token);
 
-      toast.success("Login successful");
+     
       dispatch(saveuser(response.data.userExist || response.data.adminExist));
 
       if (role === 'admin') navigate('/admindashboard/adminhome');
