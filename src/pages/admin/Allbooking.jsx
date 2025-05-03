@@ -28,7 +28,9 @@ function Allbooking() {
 
   const handleDelete = async (id) => {
     try {
-      const res = await axios.delete(`${baseUrl}/admin/deletebooking/${id}`)
+      const res = await axios.delete(`${baseUrl}/admin/deletebooking/${id}`,{
+        withCredentials:true
+      })
       console.log("deleted")
       toast("Deleted", {
         position: "top-center"
@@ -46,7 +48,9 @@ function Allbooking() {
 
   const  hangleDeactivateBooking= async (id)=>{
     try {
-      const res= await axios.patch(`${baseUrl}/admin/deactivatebooking/${id}`)
+      const res= await axios.patch(`${baseUrl}/admin/deactivatebooking/${id}`,{
+        withCredentials:true
+      })
       setBooking((prev) =>
         prev.map((booking) =>
           booking._id === id ? { ...booking, status: "inactive" } : booking
