@@ -144,7 +144,7 @@ function Homepage() {
                     <Button variant="danger" className='m-2' onClick={(e)=>{handleUnavailable(car,e)}}>MORE</Button>
                   </Link>
                   <Link to={`/userdashboard/reviews/${car._id}`}>
-                    <Button variant="warning" className='m-2' onClick={(e)=>{handleUnavailable(car,e)}}>REVIEWS</Button>
+                    <Button variant="warning" className='m-2' >REVIEWS</Button>
                   </Link>
                 </Card.Body>
               </Card>
