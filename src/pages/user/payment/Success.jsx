@@ -12,7 +12,9 @@ function Success() {
 
   const user = useSelector((state) => state.user.user);
   const userId = user?._id;
-  const sessionId = location?.state?.paymentDetails?.sessionId;
+  // const sessionId = location?.state?.paymentDetails?.sessionId;
+  const sessionId = new URLSearchParams(location.search).get("session_id");
+
   
   console.log("User from Redux:", user);
   console.log("Session ID:", sessionId);
@@ -67,7 +69,12 @@ function Success() {
 
     axios
       .post(`${baseUrl}/booking/create`, body, { withCredentials: true })
-      .then(() => console.log("Booking saved"))
+      .then(() => {
+        console.log("Booking saved");
+        localStorage.removeItem("carId");
+        localStorage.removeItem("carData");
+        localStorage.removeItem("days");
+      })
       .catch((err) =>
         console.error("Failed to save booking:", err.response?.data || err.message)
       );
